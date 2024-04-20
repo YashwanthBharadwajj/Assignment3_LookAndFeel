@@ -1,0 +1,159 @@
+/* Basic body and background settings */
+body {
+    padding-top: 20px;
+    background-color: #e3f2fd; /* Light blue background for a fresh feel */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern and clean font */
+    color: #212529; /* Darker gray text color for contrast */
+    line-height: 1.6;
+    transition: background-color 0.5s ease; /* Smooth transition for background color changes */
+}
+
+/* Styling for containers with background images */
+.container {
+    padding: 20px;
+    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(236,239,241,0.9) 100%); /* Subtle gradient to allow text readability over images */
+    border-radius: 10px; /* Pronounced rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    transition: all 0.4s ease-in-out; /* Smooth transition effects */
+}
+
+    .container:hover {
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Deeper shadow on hover */
+        transform: translateY(-2px); /* Subtle lift effect on hover */
+    }
+
+/* Specific background images for different pages */
+#home-page {
+    background-image: url('images/home-bg.jpg'); /* Ensure correct path to home page background */
+    background-size: cover;
+    background-position: center;
+}
+
+#financial-overview {
+    background-image: url('images/financial-overview-bg.jpg'); /* Ensure correct path to financial overview background */
+    background-size: cover;
+    background-position: center;
+}
+
+#expense-details {
+    background-image: url('images/expense-details-bg.jpg'); /* Ensure correct path to expense details background */
+    background-size: cover;
+    background-position: center;
+}
+
+#about-us {
+    background-image: url('images/about-us-bg.jpg'); /* Ensure correct path to about us background */
+    background-size: cover;
+    background-position: center;
+}
+
+/* General text and heading styling */
+h1, h2, h3, p {
+    margin-bottom: 12px; /* Tightened spacing */
+    transition: color 0.4s ease; /* Smoother color transition for text */
+}
+
+h1 {
+    font-size: 26px; /* Adjusted for balance */
+    color: black; /* Vibrant blue for headings */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.1); /* Subtle text shadow */
+}
+
+p {
+    font-size: 14px; /* Smaller font size for readability */
+    font-weight: normal; /* Standard weight for readability */
+}
+
+/* Link styling */
+a {
+    color: #1e88e5; /* Brighter blue for links */
+    text-decoration: none; /* Removes underline */
+    transition: color 0.3s ease, text-decoration 0.2s ease; /* Faster transitions for smoother effects */
+}
+
+    a:hover, a:focus {
+        color: #1565c0; /* Deeper blue on hover/focus */
+        text-decoration: underline; /* Returns underline on hover for clarity */
+    }
+
+/* Button styling */
+.btn {
+    background-color: #039be5; /* Saturated blue for buttons */
+    color: #fff;
+    padding: 10px 16px; /* Adjusted padding */
+    border-radius: 5px; /* Modern look */
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15); /* Light shadow */
+    transition: background-color 0.25s ease, transform 0.25s ease; /* Responsive transitions */
+}
+
+    .btn:hover {
+        background-color: #0288d1;
+        transform: scale(1.05); /* Gentle size increase on hover */
+    }
+
+/* Forms and input fields styling */
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px 0;
+    display: inline-block;
+    border: 1px solid #ccc; /* More subtle border */
+    border-radius: 4px; /* Smoother edges */
+    box-sizing: border-box; /* Proper padding and border handling */
+    transition: border-color 0.25s ease; /* Quick focus transition */
+}
+
+    input[type="text"]:focus, input[type="number"]:focus, select:focus {
+        border-color: #039be5; /* Themed focus color */
+    }
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px; /* Form balanced padding */
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s ease; /* Consistent transition speed */
+}
+
+    input[type="submit"]:hover {
+        background-color: #43a047; /* Subtle hover effect */
+    }
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+    body {
+        padding-top: 10px;
+    }
+
+    .container {
+        padding: 15px; /* Adjusted padding for mobile */
+    }
+
+    h1 {
+        font-size: 20px; /* Optimized size for mobile */
+    }
+
+    .btn {
+        padding: 8px 12px; /* Smaller button padding for mobile */
+    }
+
+    input[type="text"], input[type="number"], select {
+        padding: 8px; /* Adjusted input padding for mobile */
+    }
+}
+
+.background-color-header {
+    background-color: #EF2828 !important; /* Saturated blue for buttons */
+}
+
+.background-color-option {
+    background-color: cornsilk !important; /* Saturated blue for buttons */
+}
+
+.container-background-color {
+    background-color: firebrick;
+}

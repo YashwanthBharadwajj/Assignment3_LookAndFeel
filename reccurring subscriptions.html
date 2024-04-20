@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Expense Details - Smart Spender</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light background-color-header">
+    <a class="navbar-brand" href="index.html">Smart Spender</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="expense_overview.html">Financial Overview <span class="sr-only"></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="expense_details.html">Expense Details <span class="sr-only"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="reccurring subscriptions.html">Recurring Subscriptions<span class="sr-only"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="container mt-4 container-background-color">
+        <h2>Recurring Subscriptions</h2>
+        <form id="subscriptionForm">
+            <div class="form-group">
+                <label for="service">Service Name</label>
+                <select class="form-control" id="service" required>
+                    <option value="">Select a Service</option>
+                    <option value="Netflix">Netflix</option>
+                    <option value="Uber">Uber</option>
+                    <option value="Amazon Prime">Amazon Prime</option>
+                    <option value="Smart Spender">Smart Spender</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Monthly Fee ($)</label>
+                <input type="number" class="form-control" id="amount" required>
+            </div>
+            <div class="form-group">
+                <label for="nextBillingDate">Next Billing Date</label>
+                <input type="date" class="form-control" id="nextBillingDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Subscription</button>
+        </form>
+
+        <h3 class="mt-4">Current Subscriptions</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Service Name</th>
+                    <th>Monthly Fee</th>
+                    <th>Next Billing Date</th>
+                </tr>
+            </thead>
+            <tbody id="subscriptionsList">
+                <!-- Subscription entries will be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/subscriptions.js"></script> <!-- Link to your external JS file -->
+</html>
