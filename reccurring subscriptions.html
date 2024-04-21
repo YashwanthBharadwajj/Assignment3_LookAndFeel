@@ -5,7 +5,7 @@
     <meta viewport="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Expense Details - Smart Spender</title>
+    <title> Income - Smart Spender</title>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light background-color-header">
     <a class="navbar-brand" href="index.html">Smart Spender</a>
@@ -24,7 +24,7 @@
                 <a class="nav-link" href="expense_details.html">Expense Details <span class="sr-only"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="reccurring subscriptions.html">Recurring Subscriptions<span class="sr-only"></a>
+                <a class="nav-link" href="reccurring subscriptions.html">Income<span class="sr-only"></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
@@ -34,42 +34,28 @@
 </nav>
 
     <div class="container mt-4 container-background-color">
-        <h2>Recurring Subscriptions</h2>
+        <h2>Source of Income</h2>
         <form id="subscriptionForm">
             <div class="form-group">
-                <label for="service">Service Name</label>
-                <select class="form-control" id="service" required>
-                    <option value="">Select a Service</option>
-                    <option value="Netflix">Netflix</option>
-                    <option value="Uber">Uber</option>
-                    <option value="Amazon Prime">Amazon Prime</option>
-                    <option value="Smart Spender">Smart Spender</option>
+                <label for="Details">Details</label>
+                <select class="form-control" id="Details" required>
+                    <option value="">Select Source</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Dividends">Dividends</option>
+                    <option value="Stocks/Mutual Funds">Stocks/Mutual Funds</option>
+                    <option value="perosonal business">Personal Business</option>
+                    <option value="others">Others</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="amount">Monthly Fee ($)</label>
+            <div class="form-group">s
+                <label for="amount">Amount ($)</label>
                 <input type="number" class="form-control" id="amount" required>
             </div>
-            <div class="form-group">
-                <label for="nextBillingDate">Next Billing Date</label>
-                <input type="date" class="form-control" id="nextBillingDate" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Subscription</button>
+            
+            <button type="submit" class="btn btn-primary">Add Amount</button>
         </form>
 
-        <h3 class="mt-4">Current Subscriptions</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Service Name</th>
-                    <th>Monthly Fee</th>
-                    <th>Next Billing Date</th>
-                </tr>
-            </thead>
-            <tbody id="subscriptionsList">
-                <!-- Subscription entries will be added here -->
-            </tbody>
-        </table>
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
