@@ -6,6 +6,34 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <title>About Us - Smart Spender</title>
+<style>
+  .card img {
+    object-fit: cover;
+    height: 200px; /* Fixed height for the consistency */
+  }
+
+  .card {
+    margin-bottom: 30px; /* Spacing and between cards */
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .database-image {
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    .card img {
+      height: auto; /* Adjust height for smaller screens */
+    }
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light background-color-header">
@@ -14,30 +42,91 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="expense_overview.html">Financial Overview</a>
-      </li>
-     <li class="nav-item active">
-                <a class="nav-link" href="expense_details.html">Expense Details <span class="sr-only"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
-      <li class="nav-item">
-              <a class="nav-link" href="reccurring subscriptions.html">Recurring Subscriptions<span class="sr-only"></a>
-          </li>      
-      <li class="nav-item active">
-        <a class="nav-link" href="about.html">About Us <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-  </div>
+            <li class="nav-item">
+                <a class="nav-link" href="reccurring subscriptions.html">Income</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="expense_details.html">Expense Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="expense_overview.html">Financial Overview</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="about.html">About Us <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+   </div>
 </nav>
 
 <div class="container container-background-color">
   <h1>About Us</h1>
-  <p>This page provides information about the developers and the project.</p>
-  <!-- Add group member details and data model image here -->
+  <p>This page provides information about the developers and the project.<a href="https://github.com/YashwanthBharadwajj/Assignment3_LookAndFeel" target="_blank">https://github.com/YashwanthBharadwajj/Assignment3_LookAndFeel</a>
+</p>
+
+  <!-- Team Members Section -->
+  <div class="row">
+    <!-- Replace with actual team member details and links -->
+    <!-- Add additional team members as needed -->
+    <!-- First Team Member -->
+    <div class="col-md-3">
+      <div class="card h-100">
+        <img src="css./images/Yashwanth.jpeg" alt="Yashwanth" class="card-img-top">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Yashwanth</h5>
+          <p class="card-text">Worked on database models and also contributed towards making website responsive by adding the required tags.</p>
+          <a href="https://github.com/yashwanthbharadwajj" class="btn btn-primary mt-auto">Git</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Second Team Member -->
+    <div class="col-md-3">
+        <div class="card h-100">
+          <img src="css./images/Gowtham.jpeg" alt="Gowtham" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Gowtham</h5>
+            <p class="card-text">Worked with color schemes, javascript for fade-in animations, and responsive layout design.</p>
+            <a href="https://github.com/gowthamlekkala" class="btn btn-primary mt-auto">Git</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Third Team Member -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="css./images/Mahesh.jpeg" alt="Mahesh" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Mahesh</h5>
+            <p class="card-text">Worked on table design and image transition animations and layouts in website.</p>
+            <a href="https://github.com/maheshleela09" class="btn btn-primary mt-auto">Git</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Fourth Team Member -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="css./images/Sai Priya.jpeg" alt="Sai Priya" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Sai Priya</h5>
+            <p class="card-text">Worked on the website's table design, picture transition animations, and layouts.</p>
+            <a href="https://github.com/priyamallampati" class="btn btn-primary mt-auto">Git</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Database Model Image -->
+  <div class="database-image">
+    <h3>Database model driving the website</h3>
+    <img src="css./images/screenshot.jpeg" alt="Database Model" class="img-fluid">
+  </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
