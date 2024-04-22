@@ -51,7 +51,7 @@ $(document).ready(function() {
 });
 
 function initializeCategories() {
-    var categories = JSON.parse(localStorage.getItem('categories')) || ["Monthly Income", "Groceries", "Rent", "Entertainment", "Transport", "Miscellaneous", "Savings"];
+    var categories = JSON.parse(localStorage.getItem('categories')) || ["Groceries", "Rent", "Entertainment", "Transport", "Miscellaneous"];
     var categorySelect = $('#category');
     var categoryList = $('#categoryList');
 
