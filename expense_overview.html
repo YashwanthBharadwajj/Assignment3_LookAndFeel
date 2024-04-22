@@ -15,17 +15,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="expense_overview.html">Financial Overview <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="expense_details.html">Expense Details <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="reccurring subscriptions.html">Recurring Subscriptions<span class="sr-only"></a>
+                <a class="nav-link" href="reccurring subscriptions.html">Income</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="expense_details.html">Expense Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="expense_overview.html">Financial Overview</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
@@ -35,18 +35,24 @@
 </nav>
 
 <div class="container container-background-color">
-    <h1> Financial Overview</h1>
-    <div class="list-group">
-        <a href="expense_details.html?category=income" class="list-group-item list-group-item-action">Monthly Income - $3,200</a>
-        <a href="expense_details.html?category=groceries" class="list-group-item list-group-item-action">Groceries - $450</a>
-        <a href="expense_details.html?category=rent" class="list-group-item list-group-item-action">Rent - $1,200</a>
-        <a href="expense_details.html?category=entertainment" class="list-group-item list-group-item-action">Entertainment - $300</a>
-        <a href="expense_details.html?category=transport" class="list-group-item list-group-item-action">Transport - $250</a>
-        <a href="expense_details.html?category=miscellaneous" class="list-group-item list-group-item-action">Miscellaneous - $150</a>
-        <a href="expense_details.html?category=savings" class="list-group-item list-group-item-action">Savings - $500</a>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Financial Overview</h1>
+            <div class="list-group" style="height: 80%;">
+                <a href="expense_details.html?category=income" class="list-group-item list-group-item-action">Monthly Income - $3,200</a>
+                <a href="expense_details.html?category=groceries" class="list-group-item list-group-item-action">Groceries - $450</a>
+                <a href="expense_details.html?category=rent" class="list-group-item list-group-item-action">Rent - $1,200</a>
+                <a href="expense_details.html?category=entertainment" class="list-group-item list-group-item-action">Entertainment - $300</a>
+                <a href="expense_details.html?category=transport" class="list-group-item list-group-item-action">Transport - $250</a>
+                <a href="expense_details.html?category=miscellaneous" class="list-group-item list-group-item-action">Miscellaneous - $150</a>
+                <a href="expense_details.html?category=savings" class="list-group-item list-group-item-action">Savings - $850</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="images/img.png" alt="Financial Overview Pie Chart" class="img-fluid" style="height: 100%;">
+        </div>
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
