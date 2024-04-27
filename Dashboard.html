@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Charts</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light background-color-header">
+    <a class="navbar-brand" href="index.html">Smart Spender</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="reccurring subscriptions.html">Income</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="expense_details.html">Expense Details</a>
+            </li>
+                        <li class="nav-item">
+                <a class="nav-link" href="Dashboard.html">Dashboard</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="container mt-5">
+                <div class="row">
+            <div class="col-md-6">
+                  <h2>Expense Distribution</h2> 
+                <canvas id="expensespieChart"></canvas>
+            </div>
+            <div class="col-md-6">
+                  <h2>Income Sources</h2>
+                <canvas id="incomeBarChart"></canvas>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                 <h2>Quarterly Income vs Expenses</h2> 
+                <canvas id="incomeVsExpensesLineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+                                   // Pie Chart
+        var ctxPie = document.getElementById('expensespieChart').getContext('2d');
+        var pieChart = new Chart(ctxPie, {
+            type: 'pie',
+                        data: {
+                labels: ['Groceries - $450', 'Rent - $1200', 'Entertainment - $300', 'Transport - $250', 'Miscellaneous - $150', 'Savings - $850'],
+                datasets: [{
+                    data: [450, 1200, 300, 250, 150, 850],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                                       }
+                }
+            }
+        });
+
+ // Bar Chart
+         var ctxBar = document.getElementById('incomeBarChart').getContext('2d');
+        var incomeBarChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Salary', 'Dividends', 'Stocks/Mutual Funds', 'Personal Business', 'Others'],
+                datasets: [{
+                    label: 'Income',
+                    data: [3000, 1200, 2000, 1500, 800],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+// Summing up the values for one quarter
+var quarterlyIncome = [3000, 1200, 2000, 1500, 800].reduce((a, b) => a + b, 0);
+var quarterlyExpenses = [450, 1200, 300, 250, 150, 850].reduce((a, b) => a + b, 0);
+
+// Calculating the annual totals by multiplying by 4 (since we assume equal income and expenses across all quarters)
+var annualIncome = quarterlyIncome * 4;
+var annualExpenses = quarterlyExpenses * 4;
+
+// Now you will use these annual totals for the line chart
+// In a real application, you would use the actual annual totals
+var incomeDataAnnual = [annualIncome]; // One data point for the annual total
+var expensesDataAnnual = [annualExpenses]; // One data point for the annual total
+
+        // Line Chart for Quarterly Income vs Expenses
+        var ctxLine = document.getElementById('incomeVsExpensesLineChart').getContext('2d');
+        var incomeVsExpensesLineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Income',
+                    data: [12000, 15000, 13000, 16000], // Replace with actual income data
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Expenses',
+                    data: [10000, 12000, 11000, 14000], // Replace with actual expenses data
+                    fill: false,
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>    
