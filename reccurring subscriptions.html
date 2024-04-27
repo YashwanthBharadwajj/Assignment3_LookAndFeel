@@ -23,8 +23,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="expense_details.html">Expense Details</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="expense_overview.html">Financial Overview</a>
+                <li class="nav-item">
+                <a class="nav-link" href="Dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
@@ -53,6 +53,26 @@
             </div>
             
             <button type="submit" class="btn btn-primary">Add Amount</button>
+
+           <div class="container mt-4 container-background-color">
+        <form id="subscriptionForm">
+        <!-- Your existing form inputs here -->
+    </form>
+    <!-- Table to display the income details -->
+    <table id="incomeTable" class="table">
+        <thead>
+            <tr>
+                <th>Details</th>
+                <th>Amount ($)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- New rows will be added here -->
+        </tbody>
+    </table>
+</div>
+
         </form>
 
         
@@ -62,4 +82,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="js/subscriptions.js"></script> <!-- Link to your external JS file -->
+    <script src="js/script.js"></script>
 </html>
