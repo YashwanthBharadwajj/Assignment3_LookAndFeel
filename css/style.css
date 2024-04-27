@@ -11,7 +11,7 @@ body {
 /* Styling for containers with background images */
 .container {
     padding: 20px;
-    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(236,239,241,0.9) 100%); /* Subtle gradient to allow text readability over images */
+    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 100%); /* Subtle gradient to allow text readability over images */
     border-radius: 10px; /* Pronounced rounded corners */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
     transition: all 0.4s ease-in-out; /* Smooth transition effects */
@@ -55,7 +55,7 @@ h1, h2, h3, p {
 
 h1 {
     font-size: 26px; /* Adjusted for balance */
-    color: black; /* Vibrant blue for headings */
+    color: #000; /* Solid black for headings */
     text-shadow: 1px 1px 4px rgba(0,0,0,0.1); /* Subtle text shadow */
 }
 
@@ -66,20 +66,20 @@ p {
 
 /* Link styling */
 a {
-    color: #1e88e5; /* Brighter blue for links */
+    color: #ffffff; /* White color for navigation links */
     text-decoration: none; /* Removes underline */
     transition: color 0.3s ease, text-decoration 0.2s ease; /* Faster transitions for smoother effects */
 }
 
     a:hover, a:focus {
-        color: #1565c0; /* Deeper blue on hover/focus */
+        color: #cccccc; /* Lighter grey on hover/focus for navigation links */
         text-decoration: underline; /* Returns underline on hover for clarity */
     }
 
 /* Button styling */
 .btn {
     background-color: #039be5; /* Saturated blue for buttons */
-    color: #fff;
+    color: #fff; /* White color for button text */
     padding: 10px 16px; /* Adjusted padding */
     border-radius: 5px; /* Modern look */
     box-shadow: 2px 2px 4px rgba(0,0,0,0.15); /* Light shadow */
@@ -87,7 +87,7 @@ a {
 }
 
     .btn:hover {
-        background-color: #0288d1;
+        background-color: #0288d1; /* Darker blue on hover for buttons */
         transform: scale(1.05); /* Gentle size increase on hover */
     }
 
@@ -109,8 +109,8 @@ input[type="text"], input[type="number"], select {
 
 input[type="submit"] {
     width: 100%;
-    background-color: #4caf50;
-    color: white;
+    background-color: #4caf50; /* Green background for submit buttons */
+    color: white; /* White color for submit button text */
     padding: 14px 20px; /* Form balanced padding */
     margin: 8px 0;
     border: none;
@@ -120,7 +120,7 @@ input[type="submit"] {
 }
 
     input[type="submit"]:hover {
-        background-color: #43a047; /* Subtle hover effect */
+        background-color: #43a047; /* Darker green on hover for submit buttons */
     }
 
 /* Responsive enhancements */
@@ -147,13 +147,84 @@ input[type="submit"] {
 }
 
 .background-color-header {
-    background-color: #EF2828 !important; /* Saturated blue for buttons */
+    background-color: #EF2828 !important; /* Saturated red for header background */
 }
 
 .background-color-option {
-    background-color: cornsilk !important; /* Saturated blue for buttons */
+    background-color: #ffffff !important; /* Changed from cornsilk to white for options background */
 }
 
 .container-background-color {
-    background-color: firebrick;
+    background-color: #B22222; /* Dark red for container background */
+}
+
+/* Other CSS styles */
+
+/* Add this to target the navigation bar text color specifically */
+.navbar-nav .nav-link {
+    color: #ffffff; /* White text for nav links */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #cccccc; /* Light gray on hover/focus for nav links */
+}
+
+/* Navigation background color */
+.background-color-header {
+    background-color: #EF2828 !important; /* Red for the navigation background */
+}
+
+/* Existing CSS */
+
+/* Add this to target the navigation bar text color specifically */
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff; /* White text for nav links */
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: #cccccc; /* Light gray on hover/focus for nav links */
+}
+
+/* Update the .navbar-brand if you want to change its color as well */
+.navbar-light .navbar-brand {
+    color: #ffffff; /* White text for the brand */
+}
+
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus {
+    color: #cccccc; /* Light gray on hover/focus for the brand */
+}
+
+/* Navigation background color */
+.background-color-header {
+    background-color: #EF2828 !important; /* Keep the red background for the navigation bar */
+}
+
+/* Other CSS continues */
+
+/* Stronger specificity for nav-link colors */
+.navbar .navbar-nav .nav-link {
+    color: #ffffff !important; /* Ensures text is white */
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus {
+    color: #cccccc !important; /* Ensures hover/focus is light gray */
+}
+
+/* If your navbar brand needs color change */
+.navbar .navbar-brand {
+    color: #ffffff !important; /* Ensures brand text is white */
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: #cccccc !important; /* Ensures hover/focus is light gray */
+}
+
+/* Ensuring the navbar background is the correct color */
+.navbar {
+    background-color: #EF2828 !important; /* Red background for the navigation bar */
 }
