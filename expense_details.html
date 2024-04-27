@@ -18,14 +18,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+                <li class="nav-item">
                 <a class="nav-link" href="reccurring subscriptions.html">Income</a>
             </li>
-            <li class="nav-item">
+                <li class="nav-item">
                 <a class="nav-link" href="expense_details.html">Expense Details</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="expense_overview.html">Financial Overview</a>
+                <li class="nav-item">
+                <a class="nav-link" href="Dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
@@ -36,8 +36,27 @@
 
 <div class="container mt-3 container-background-color">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#expenseModal">Add New Expense</button>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteExpenseModal">Delete Expense</button>
+     <!-- Existing div for expense list, if you have one -->
+    <div id="expenseList"></div>
+    
+    <!-- Add the table for displaying expenses here -->
+    <table id="expensesTable" class="table">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Item</th>
+                <th>Amount ($)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be added here dynamically via JavaScript -->
+        </tbody>
+    </table>
+
+
     <div class="mt-3" id="expenseList"></div>
+
 </div>
 
 <!-- Add Expense Modal -->
@@ -71,39 +90,11 @@
             <label for="amount">Amount ($)</label>
             <input type="number" class="form-control" id="amount" required>
           </div>
-        </form>
+               </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" onclick="saveExpense()">Save Expense</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Delete Expense Modal -->
-<div class="modal fade" id="deleteExpenseModal" tabindex="-1" role="dialog" aria-labelledby="deleteExpenseModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteExpenseModalLabel">Delete Expense</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="deleteExpenseForm">
-          <div class="form-group">
-            <label for="deleteCategory">Select Expense to Delete</label>
-            <select class="form-control" id="deleteCategory">
-              <!-- Expenses will be dynamically loaded here -->
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" onclick="deleteExpense()">Delete Expense</button>
       </div>
     </div>
   </div>
