@@ -1,100 +1,298 @@
 $(document).ready(function() {
-    // Initialize categories from localStorage or default list and display them
+    // Load categories and display them
     initializeCategories();
-
-    // Display existing expenses from local storage or initialization
+    // Load and display income and expenses
+    displayIncome();
     displayExpenses();
 
-    // Handle opening the add expense modal with form reset
-    $('#addExpenseButton').click(function() {
-        $('#expenseModal').modal('show');
-        $('#expenseForm')[0].reset();
-        $('#expenseId').val(''); // Ensure ID is cleared for adding a new expense
-    });
-
-    // Save or update an expense
-    $('#saveExpense').click(function() {
-        const id = $('#expenseId').val();
-        const category = $('#category').val();
-        const item = $('#item').val();
-        const amount = parseFloat($('#amount').val());
-
-        if (id) {
-            editExpense(parseInt(id), category, item, amount);
-        } else {
-            addExpense(category, item, amount);
-        }
-
-        $('#expenseModal').modal('hide');
-    });
-
-    // Handle the edit button click to populate the form and show the modal
-    $(document).on('click', '.editExpense', function() {
-        const id = $(this).data('id');
-        const expense = expenses.find(e => e.id === parseInt(id));
-        if (expense) {
-            $('#category').val(expense.category);
-            $('#item').val(expense.item);
-            $('#amount').val(expense.amount);
-            $('#expenseId').val(expense.id);
-            $('#expenseModal').modal('show');
-        }
-    });
-
-    // Delete an expense with confirmation
-    $(document).on('click', '.deleteExpense', function() {
-        const id = $(this).data('id');
-        if (confirm('Are you sure you want to delete this expense?')) {
-            deleteExpense(parseInt(id));
-        }
-    });
+    // Add event listeners for buttons and other interactive elements
+    setUpEventListeners();
 });
 
+function setUpEventListeners() {
+    // Event listeners for buttons and forms
+    $('#addIncomeButton').click(function() {
+        // Code to show add income modal
+    });
+
+    $('#addExpenseButton').click(function() {
+        // Code to show add expense modal
+    });
+
+    $('#saveIncome').click(function() {
+        // Code to save income
+    });
+
+    $('#saveExpense').click(function() {
+        // Code to save expense
+    });
+
+    // Repeat for other interactive elements
+}
+
 function initializeCategories() {
+    // Retrieve or default initialize categories
     var categories = JSON.parse(localStorage.getItem('categories')) || ["Groceries", "Rent", "Entertainment", "Transport", "Miscellaneous"];
-    var categorySelect = $('#category');
-    var categoryList = $('#categoryList');
+    populateCategoryOptions(categories);
+}
 
-    categorySelect.empty();
-    categoryList.empty();
-
-    categories.forEach(function(category) {
-        categorySelect.append(`<option value="${category}">${category}</option>`);
-        categoryList.append(`<a href="expense_details.html?category=${category}" class="list-group-item list-group-item-action">${category}</a>`);
+function displayIncome() {
+    var incomeList = $('#incomeTable tbody');
+    incomeList.empty();
+    var income = JSON.parse(localStorage.getItem('income')) || [];
+    income.forEach(function(entry) {
+        incomeList.append(createIncomeRow(entry));
     });
 }
 
 function displayExpenses() {
-    const expenseList = $('#incomeList');
+    var expenseList = $('#expensesTable tbody');
     expenseList.empty();
-    expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-    expenses.forEach(expense => {
-        expenseList.append(`<li class="list-group-item">
-            ${expense.category} - ${expense.item} - $${expense.amount}
-            <button type="button" class="btn btn-info btn-sm editExpense" data-id="${expense.id}">Edit</button>
-            <button type="button" class="btn btn-danger btn-sm deleteExpense" data-id="${expense.id}">Delete</button>
-        </li>`);
+    var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    expenses.forEach(function(entry) {
+        expenseList.append(createExpenseRow(entry));
     });
 }
 
-function addExpense(category, item, amount) {
-    const newId = expenses.length + 1;
+function populateCategoryOptions(categories) {
+    var categorySelect = $('#category');
+    categorySelect.empty();
+    categories.forEach(function(category) {
+        categorySelect.append(new Option(category, category));
+    });
+}
+
+function createIncomeRow(entry) {
+    return `<tr>
+                <td>${entry.detail}</td>
+                <td>$${entry.amount}</td>
+                <td><button type="button" class="btn btn-danger deleteIncome" data-id="${entry.id}">Delete</button></td>
+            </tr>`;
+}
+
+function createExpenseRow(entry) {
+    return `<tr>
+                <td>${entry.category}</td>
+                <td>${entry.item}</td>
+                <td>$${entry.amount}</td>
+                <td><button type="button" class="btn btn-danger deleteExpense" data-id="${entry.id}">Delete</button></td>
+            </tr>`;
+}
+
+function saveIncome(detail, amount) {
+    var income = JSON.parse(localStorage.getItem('income')) || [];
+    var newId = income.length + 1;
+    income.push({ id: newId, detail, amount });
+    localStorage.setItem('income', JSON.stringify(income));
+    displayIncome();
+}
+
+function saveExpense(category, item, amount) {
+    var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    var newId = expenses.length + 1;
     expenses.push({ id: newId, category, item, amount });
     localStorage.setItem('expenses', JSON.stringify(expenses));
     displayExpenses();
 }
 
-function editExpense(id, category, item, amount) {
-    const index = expenses.findIndex(exp => exp.id === id);
+$(document).on('click', '.deleteIncome', function() {
+    var id = $(this).data('id');
+    deleteIncome(id);
+});
+
+$(document).on('click', '.deleteExpense', function() {
+    var id = $(this).data('id');
+    deleteExpense(id);
+});
+
+function deleteIncome(id) {
+    var income = JSON.parse(localStorage.getItem('income')) || [];
+    var index = income.findIndex(function(entry) {
+        return entry.id === id;
+    });
     if (index !== -1) {
-        expenses[index] = { id, category, item, amount };
+        income.splice(index, 1);
+        localStorage.setItem('income', JSON.stringify(income));
+        displayIncome();
+    }
+}
+
+function deleteExpense(id) {
+    var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    var index = expenses.findIndex(function(entry) {
+        return entry.id === id;
+    });
+    if (index !== -1) {
+        expenses.splice(index, 1);
         localStorage.setItem('expenses', JSON.stringify(expenses));
         displayExpenses();
     }
 }
 
-function deleteExpense(id) {
-    expenses = expenses.filter(exp => exp.id !== id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+    // Load and display income and expenses
+    displayIncome();
+    displayExpenses();
+
+    // Bind the form submission to a handler function
+    $('#subscriptionForm').submit(function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Capture the input values
+        var details = $('#Details').val();
+        var amount = $('#amount').val();
+
+        // Call the function to save the new income entry
+        saveIncome(details, amount);
+
+        // Reset the form fields
+        $('#Details').val('');
+        $('#amount').val('');
+    });
+
+    // Other event handlers...
+});
+
+// Other functions...
+
+function saveIncome(detail, amount) {
+    // Check if the amount is a number and not empty
+    if (!amount || isNaN(amount)) {
+        alert("Please enter a valid number for the amount.");
+        return;
+    }
+    
+    var income = JSON.parse(localStorage.getItem('income')) || [];
+    var newId = income.length > 0 ? Math.max(...income.map(i => i.id)) + 1 : 1; // Ensure a unique ID is assigned
+    income.push({ id: newId, detail, amount: parseFloat(amount) });
+    localStorage.setItem('income', JSON.stringify(income));
+    displayIncome();
+}
+
+// Other functions...
+
+
+
+
+
+
+
+
+
+
+function createIncomeRow(entry) {
+    return `<tr>
+                <td>${entry.detail}</td>
+                <td>$${parseFloat(entry.amount).toFixed(2)}</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm editIncome" data-id="${entry.id}">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm deleteIncome" data-id="${entry.id}">Delete</button>
+                </td>
+            </tr>`;
+}
+function saveExpense() {
+    var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    var category = $('#category').val();
+    var item = $('#item').val();
+    var amount = parseFloat($('#amount').val());
+
+    if (!category || !item || isNaN(amount)) {
+        alert("Please enter valid expense details.");
+        return;
+    }
+
+    var newId = expenses.length > 0 ? Math.max(...expenses.map(e => e.id)) + 1 : 1;
+    expenses.push({ id: newId, category: category, item: item, amount: amount });
     localStorage.setItem('expenses', JSON.stringify(expenses));
     displayExpenses();
 }
+
+function createExpenseRow(expense) {
+    if (!expense || typeof expense !== 'object' || isNaN(expense.amount)) {
+        // Log the incorrect expense object to the console for debugging
+        console.error('Invalid expense object:', expense);
+        return ''; // Return an empty string to avoid creating a faulty table row
+    }
+    
+    return `<tr>
+                <td>${expense.category}</td>
+                <td>${expense.item}</td>
+                <td>$${expense.amount.toFixed(2)}</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm editExpense" data-id="${expense.id}">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm deleteExpense" data-id="${expense.id}">Delete</button>
+                </td>
+            </tr>`;
+}
+
+// Event listener for the save button
+$('#saveExpense').click(function() {
+    saveExpense();
+});
+
+
+
+
+$(document).ready(function() {
+    // Other initializations...
+
+    // Event delegation for the edit buttons
+    $('#expensesTable').on('click', '.editExpense', function() {
+        var id = $(this).data('id');
+        editExpense(id);
+    });
+
+    $('#incomeTable').on('click', '.editIncome', function() {
+        var id = $(this).data('id');
+        editIncome(id);
+    });
+
+    // Other event listeners...
+});
+
+function editExpense(id) {
+    var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    var expenseToEdit = expenses.find(function(expense) {
+        return expense.id === id;
+    });
+
+    if (expenseToEdit) {
+        $('#category').val(expenseToEdit.category);
+        $('#item').val(expenseToEdit.item);
+        $('#amount').val(expenseToEdit.amount);
+        $('#expenseId').val(expenseToEdit.id); // Assuming you have a hidden input for expenseId
+        $('#expenseModal').modal('show');
+    }
+}
+
+function editIncome(id) {
+    var income = JSON.parse(localStorage.getItem('income')) || [];
+    var incomeToEdit = income.find(function(entry) {
+        return entry.id === id;
+    });
+
+    if (incomeToEdit) {
+        $('#Details').val(incomeToEdit.detail); // Assuming Details is the id of your input for income details
+        $('#amount').val(incomeToEdit.amount);
+        $('#incomeId').val(incomeToEdit.id); // Assuming you have a hidden input for incomeId
+        // Here you should show the modal or form for editing income
+    }
+}
+
+// Add save/edit functions here...
